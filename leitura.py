@@ -21,9 +21,6 @@ arq.close()
 copys = []
 
 
-def replace(TextAntigo, TextNovo, line):
-    return re.sub(TextAntigo, TextNovo, line.rstrip())
-
 for lines in arquivo:
     if lines[lines.find("COPY")+32:45] == 'EMI"':
         copys.append(lines[lines.find("COPY")+23:40])
@@ -42,7 +39,7 @@ for line in myfile:
 
         elif line.__contains__(r"READ %s AT END" % copy) and not line.__contains__("WITH NO LOCK") and not line.__contains__("PREVIOUS") \
                 and not line.__contains__("NEXT"):
-                line = re.sub(r"READ %s AT END " % copy, r"READ %s WITH NO LOCK AT END" % copy, line.rstrip())+ "\n"
+                line = re.sub(r"READ %s AT END" % copy, r"READ %s WITH NO LOCK AT END" % copy, line.rstrip())+ "\n"
 
         elif line.__contains__(r"READ %s NEXT." % copy) and not line.__contains__("WITH NO LOCK") and not line.__contains__("PREVIOUS") \
                 and not line.__contains__("AT END"):
@@ -61,7 +58,7 @@ for line in myfile:
                 line = re.sub(r"READ %s PREVIOUS " % copy, r"READ %s PREVIOUS WITH NO LOCK " % copy, line.rstrip()) + "\n"
 
         elif line.__contains__(r"READ %s KEY IS" % copy) and not line.__contains__("WITH NO LOCK") and line.__contains__(r"NEXT" % copy):
-                line = re.sub(r"READ %s KEY IS " % copy, r"READ %s WITH NO LOCK '\n' KEY IS" % copy, line.rstrip()) + "\n"
+                line = re.sub(r"READ %s KEY IS " % copy, r"READ %s WITH NO LOCK r'\n' KEY IS" % copy, line.rstrip()) + "\n"
 
     sys.stdout.write(line)
 

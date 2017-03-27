@@ -1,37 +1,34 @@
          IDENTIFICATION DIVISION.
-         PROGRAM-ID.    VDCABLOC.
+         PROGRAM-ID.    VDCABLOP.
          SECURITY.
       ******************************************************************
       *+888+ PESQUISA...                                               *
-      * CONSULTA MOTIVOS DE BLOQUEIO DE CLIENTES                       *
+      * PESQUISA MOTIVOS DE BLOQUEIO DE CLIENTES                       *
       ******************************************************************
       *--------------  O B S E R V A C O E S  -------------------------*
       * -                                                              *
       * - *+222+ INCL/ALTE/EXCL so se VD=VENDAS                        *
       * -                                                              *
       *                                                                *
-      * OBS: este programa NÇO PODE ser tomado como MODELO , pois ‚ um *
-      *      caso particular                                           *
+      * OBS: este programa NÇO PODE ser tomado como modelo para futuros*
+      * programas de CONSULTA, pois ‚ um caso particular               *
       *                                                                *
       *--------------  A L T E R A C O E S  ---------------------------*
-      * 06/09/2005 COPIADO DO VDKATIPC.CBL                    CRISTIANO*
+      * 06/09/2005 COPIADO DO VDCABLOC.CBL                    CRISTIANO*
       * 16/03/2006 ALTERA€ÇO DE PIC P/ O CPO VDCADBLO-COD     CRISTIANO*
       * 29/06/2006 INCLUSÇO DE COLUNA NA GRID P/ O CPO IMPCLIPALM      *
       *            (IMPORTA€ÇO PARA PALMTOP)                  CRISTIANO*
       * 15/09/2006 CONTROLE PARA COROA                          MARCELO*
-      * 21/09/2006 ALT. CAMINHO XXVERSA/XXREPGM                 ROBERTO*
+      * 21/09/2006 ALT. CAMINHO XXVERSA/XXRESUB                 ROBERTO*
       * 29/12/2006 INCLUIDO CAMPO "PERMITIR VENDA"              MARCELO*
       * 09/01/2007 TRATAMENTO PARA VONPAR                       MARCELO*
       * 28/05/2008 AJUSTE DE TELA                               MARCELO*
       * 29/05/2008 CONTROLE PARA NORSA                          MARCELO*
-      * 02/09/2008 AJUSTE TELA                                  MARCELO*
-      * 16/08/2010 CONVERSÇO VDCADBLO-COD DE X(1) PARA X(3)      VALDIR*10.10.013
+      * 16/08/2010 CONVERSÇO VDCADBLO-COD DE X(1) PARA X(3)      VALDIR*10.10.010
       *                    E VDCADBLO-MOTBLQCIA DE X(1) PARA X(3)      *
-      * 23/05/2011 AJUSTE NAS FD, SELECT, PRM, OPENS, E CLOSE     KENDY*11.05.014
+      * 23/05/2011 AJUSTE NAS FD, SELECT, PRM, OPENS, E CLOSE     KENDY*11.05.011
       *    PARA O PADRÇO NOVO                                          *
-      * 05/10/2012 REFERENTE A O.S. - 384.176                     KENDY*12.10.015
-      * 05/09/2013 Liberada manuten‡Æo para a F brica Coroa         LCA*13.09.016
-      * 20/01/2014 OS-2581: BANDEIRA=012 (NORSA)                MARCELO*14.01.017
+      * 20/01/2014 OS-2581: BANDEIRA=012 (NORSA)                MARCELO*14.01.013
       *                     BANDEIRA=018 (SOLAR)                       *
       *                     BANDEIRA=015 (GUARARAPES)                  *
       *                     BANDEIRA=013 (RENOSA)                      *
@@ -41,7 +38,7 @@
       *                     BANDEIRA=016 (SIMOES)                      *
       *                     BANDEIRA=031 (FEMSA)                       *
       * 13/04/2016 OS-6796: TRATAMENTO BANDEIRA-018 SOLAR              *
-      *                     COM NOVA LICENCA-FABRICA = 6455     MARCELO*16.04.018
+      *                     COM NOVA LICENCA-FABRICA = 6455     MARCELO*16.04.014
       *================================================================*   VERSAO
          ENVIRONMENT DIVISION.
          CONFIGURATION SECTION.
@@ -64,7 +61,7 @@
          WORKING-STORAGE SECTION.
       *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
          77 WTPGM-HEADER        PIC  X(019) VALUE "=>CONTROLE VERSAO<=".
-         77 WTPGM-VERSAO        PIC  X(009) VALUE "16.04.018".
+         77 WTPGM-VERSAO        PIC  X(009) VALUE "16.04.014".
       *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
          COPY "J:\PRGNEW\GE\BOK\GEDIR.WOR".
          COPY "J:\PRGNEW\VD\BOK\VDDIR.WOR".
@@ -82,7 +79,7 @@
              05  WLOG-TIPOCHAVE PIC  X(035).
          03  WTITULO            PIC  X(056) VALUE
       *+888+   Pesquisa...
-             " Consulta Motivos de Bloqueio de Clientes".
+             " Pesquisa Motivos de Bloqueio de Clientes".
 
       *------ JANELA 1 ------------------------------------------------*
          03  WJ1-TOT-ITENS      PIC  9(007) VALUE 999999.
@@ -115,10 +112,9 @@
 VG           05  F PIC X(005) VALUE 'C¢d'.
 VG           05  F PIC X(046) VALUE 'Descri‡Æo'.
              05  F PIC X(017) VALUE 'Desc. Reduzida'.
-051012* *    05  F PIC X(010) VALUE 'Positiv.'.
-051012       05  F PIC X(010) VALUE 'Cobert.'.
+             05  F PIC X(010) VALUE 'Cobertu.'.
              05  F PIC X(009) VALUE 'Bloq.CIA'.
-             05  F PIC X(009) VALUE 'Env.Palm'.
+             05  F PIC X(009) VALUE 'Imp.Palm'.
              05  F PIC X(005) VALUE 'Venda'.
       *----------------------------------------------------------------*
          COPY "J:\PRGNEW\VD\BOK\VDCADBLO.EPRM"
@@ -131,8 +127,8 @@ VG           05  F PIC X(046) VALUE 'Descri‡Æo'.
          COPY "J:\PRGNEW\VFEV99\AJUDA\WSPAD2.".
       *----------------------------------------------------------------*
       *+888+ LIBERAR PARA PESQUISA E ACERTAR O TAMANHO
-      *  LINKAGE SECTION.
-      *  01  WPARAMETROS        PIC  X(100).
+         LINKAGE SECTION.
+         01  WPARAMETROS        PIC  X(100).
       *----------------------------------------------------------------*
       /
       *----------------------------------------------------------------*
@@ -142,12 +138,12 @@ VG           05  F PIC X(046) VALUE 'Descri‡Æo'.
              05  BLANK SCREEN.
       *+888+ TIRAR 10 LINHAS DO LINES
              05  FRAME
-                 LINE   01,00 LINES 25,90 CELLS
-                 COL    01,80 SIZE  73,30 CELLS
+                 LINE   01,00 LINES 15,90 CELLS
+                 COL    01,80 SIZE  74,30 CELLS
                  .
       *+888+ TIRAR 10 LINHAS DO LINES
              05  FRAME
-                 LINE + 00,70 LINES 24,60 CELLS
+                 LINE + 00,70 LINES 14,60 CELLS
                  COL    02,80 SIZE  72,20 CELLS
                  RAISED   ALTERNATE
                  .
@@ -158,7 +154,7 @@ VG           05  F PIC X(046) VALUE 'Descri‡Æo'.
          01  D100 LIST-BOX BEFORE B-D100 USING WJ1-TEL
                  FONT                  XXEXTSIS-COM-FONT-GRID
       *+888+ TIRAR 10 LINHAS DO LINES
-                 LINE   03,70 LINES 22,50 CELLS
+                 LINE   03,70 LINES 12,50 CELLS
                  COL    03,55 SIZE  70,40 CELLS
                  AFTER     A-101  THRU FA-101
                           ID 001
@@ -197,24 +193,22 @@ VG               DATA-COLUMNS    = ( 01  04  34  49  50  53  56  59)
       *================================================================*
       /
       *================================================================*
-      *+888+ PROCEDURE DIVISION USING WPARAMETROS.
-         PROCEDURE DIVISION.
+         PROCEDURE DIVISION USING WPARAMETROS.
+      *  PROCEDURE DIVISION.
          INICIO.
          COPY "J:\PRGNEW\GE\BOK\GEINICIO.PRO".
          COPY "J:\PRGNEW\VD\BOK\VDVERSA.PRO".
       *+888+ TIRAR GENOPGM.PRO e LIBERAR ESTES
-      *  COPY "J:\PRGNEW\GE\BOK\GENOSUB.PRO".
-      *
-      *         MOVE 4237             TO XXEXTSIS-COM-CALLSUBNR.
-      *
-         COPY "J:\PRGNEW\GE\BOK\GENOPGM.PRO".
+         COPY "J:\PRGNEW\GE\BOK\GENOSUB.PRO".
+
+                MOVE 4237             TO XXEXTSIS-COM-CALLSUBNR.
+
+      *  COPY "J:\PRGNEW\GE\BOK\GENOPGM.PRO".
          COPY "J:\PRGNEW\GE\BOK\GETSACE.PRO".
 
       *+888+ TIRAR 10 LINHAS DO LINES
                 DISPLAY FLOATING WINDOW
-      *+888+ PESQUISA ABRE TELA MAIS ABAIXO
-      *          LINE -01,80 COL 02,00 LINES 26,50 SIZE 75,90
-                 LINE -04,40 COL 01,40 LINES 26,50 SIZE 75,90
+                 LINE -01,80 COL 02,00 LINES 16,50 SIZE 75,90
                  CONTROL FONT IS XXEXTSIS-COM-FONT-TELA
                  COLOR XXEXTSIS-USU-CORTEL
                  TITLE WTITULO
@@ -229,10 +223,7 @@ VG               DATA-COLUMNS    = ( 01  04  34  49  50  53  56  59)
                      MOVE 0           TO WTBAR-DUPLSN.
                 MOVE 1                TO WTBAR-IMPRSN.
 
-
-200114          IF (XXEXTSIS-CLI-BANDEIRA = 009 AND                      (COROA)
-200114                                          WSPAD-NUMLIC NOT = 5599)
-200114             OR
+200114          IF XXEXTSIS-CLI-BANDEIRA = 009 OR                        (COROA)
 200114             (XXEXTSIS-CLI-BANDEIRA = 010 AND
 200114                                          WSPAD-NUMLIC NOT = 6100) (VONPAR)
 200114                                                                OR
@@ -295,26 +286,26 @@ VG               DATA-COLUMNS    = ( 01  04  34  49  50  53  56  59)
                 IF WTECLA-ESC
                     STOP THREAD WJANELAT
                     DESTROY D100
-      *+++ N¶O      GO TO CONSULTA.
+      *+++          GO TO CONSULTA.
                     GO TO RETORNA.
                 IF WTECLA-INATI
                     MOVE 033          TO XXEXTSIS-COM-NRMSG
                     CALL "GEMSG"
                     STOP THREAD WJANELAT
                     DESTROY D100
-      *+++ N¶O      GO TO CONSULTA.
+      *+++          GO TO CONSULTA.
                     GO TO RETORNA.
                 IF WTECLA-FECHAR AND WEVE-TYPE = CMD-CLOSE
                     STOP THREAD WJANELAT
                     GO TO RETORNA.
-      *+++ N¶O  IF WJ1-CHA-COD      NOT NUMERIC
+      *+++NÇO   IF WJ1-CHA-COD      NOT NUMERIC
       *             MOVE ZEROS        TO WJ1-CHA-COD.
       *----------------------------------------------------------------*
       *+888+ ENTER USADO PARA SELECIONAR REGISTRO POSICIONADO PESQUISA
-      *         IF WTECLA-ENTER
-      *           IF WJ1-CHA-COD   NOT = ZEROS
-      *             STOP THREAD WJANELAT
-      *             GO TO FIM.
+                IF WTECLA-ENTER
+                  IF WJ1-CHA-COD   NOT = SPACES
+                    STOP THREAD WJANELAT
+                    GO TO FIM.
       *----------------------------------------------------------------*
                 IF WTECLA-ENTER OR WTECLA-VIEW
                  IF WTBAR-VIEW         = 1
@@ -328,10 +319,11 @@ VG               DATA-COLUMNS    = ( 01  04  34  49  50  53  56  59)
                 IF WTECLA-INCL
                  IF WTBAR-INCL         = 1
       *+NAO+      IF WJ1-CHA-COD   NOT = SPACES
-                    MOVE ZEROS             TO WPARMVDCADBLO-COD
+                    MOVE SPACES            TO WPARMVDCADBLO-COD
                     MOVE "VDCABLOI"        TO XXEXTSIS-COM-CALLPRX
                     MOVE XXEXTSIS-VER-VD   TO XXEXTSIS-COM-CALLPRX (9:4)
                     CALL  XXEXTSIS-COM-CALLPRX USING WPARMVDCADBLO
+                    CALL  XXEXTSIS-COM-CALLPRX
                     CANCEL XXEXTSIS-COM-CALLPRX
                     STOP THREAD WJANELAT
                     DESTROY D100
@@ -372,7 +364,7 @@ VG               DATA-COLUMNS    = ( 01  04  34  49  50  53  56  59)
                     GO TO RESTART-VDCADBLO.
                 IF WTECLA-IMPR
                  IF WTBAR-IMPR         = 1
-      *+NAO+       IF WJ1-CHA-COD   NOT = SPACES
+      *+NAO+      IF WJ1-CHA-COD   NOT = SPACES
                     MOVE "VDCABLOL"         TO XXEXTSIS-COM-CALLPRX
                     MOVE XXEXTSIS-VER-VD    TO XXEXTSIS-COM-CALLPRX(9:4)
                     CALL  XXEXTSIS-COM-CALLPRX
@@ -415,6 +407,7 @@ VG               DATA-COLUMNS    = ( 01  04  34  49  50  53  56  59)
                 DISPLAY TMSGI UPON XXEXTSIS-COM-MWINDOW.
       *----------------------------------------------------------------*
          A-101.
+      *         STOP "".
                 IF WTECLA-VIEW    OR WTECLA-FOTO
                     MOVE "S"          TO WSCR-CAMPO-OK (WSCR-CAMPO)
                     GO TO FA-101.
@@ -438,6 +431,7 @@ VG               DATA-COLUMNS    = ( 01  04  34  49  50  53  56  59)
                 EXIT.
       *----------------------------------------------------------------*
          E-101.
+      *         STOP "".
                 IF WTECLA-FECHAR AND WEVE-TYPE = CMD-CLOSE
                     GO TO FE-101.
                 IF NOT WTECLA-FECHAR
@@ -475,7 +469,7 @@ VG               DATA-COLUMNS    = ( 01  04  34  49  50  53  56  59)
       *----------------------------------------------------------------*
          J1-MONTA-TAB.
          LE-VDCADBLO.
-                READ VDCADBLO WITH NO LOCK AT END
+                READ VDCADBLO AT END
                     GO TO FLE-VDCADBLO.
                 IF XXEXTSIS-COM-FSTATUS = XXEXTSIS-COM-FSFIMARQ OR "46"
                     GO TO FLE-VDCADBLO.
@@ -551,9 +545,9 @@ VG               DATA-COLUMNS    = ( 01  04  34  49  50  53  56  59)
          RETORNA.
          COPY "J:\PRGNEW\VD\BOK\VDCADBLO.ECLO"
                REPLACING =='VDCADBLO'== BY ==VDCADBLO==.
-      *+888+    MOVE WPARMVDCADBLO      TO WPARAMETROS.
+                MOVE WPARMVDCADBLO      TO WPARAMETROS.
          RETORNAF.
       *+888+  "J:\PRGNEW\GE\BOK\GERESUB.PRO".
-         COPY "J:\PRGNEW\VD\BOK\VDREPGM.PRO".
+         COPY "J:\PRGNEW\VD\BOK\VDRESUB.PRO".
                 EXIT PROGRAM.
       *================================================================*

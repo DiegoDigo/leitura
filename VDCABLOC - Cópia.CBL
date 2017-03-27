@@ -475,7 +475,7 @@ VG               DATA-COLUMNS    = ( 01  04  34  49  50  53  56  59)
       *----------------------------------------------------------------*
          J1-MONTA-TAB.
          LE-VDCADBLO.
-                READ VDCADBLO WITH NO LOCK AT END
+                READ VDCADBLO AT END
                     GO TO FLE-VDCADBLO.
                 IF XXEXTSIS-COM-FSTATUS = XXEXTSIS-COM-FSFIMARQ OR "46"
                     GO TO FLE-VDCADBLO.
