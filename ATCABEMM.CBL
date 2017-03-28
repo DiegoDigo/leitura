@@ -840,7 +840,7 @@
                 MOVE WSPAD-CODEMP             TO ATCADBEM-NREMP.
                 MOVE WPARMATCADBEM-CODBEM     TO ATCADBEM-CODBEM.
                 MOVE WPARMATCADBEM-SUBCODBEM  TO ATCADBEM-SUBCODBEM.
-                READ ATCADBEM.
+                READ ATCADBEM WITH NO LOCK.
                 IF XXEXTSIS-COM-FSTATUS  NOT = "00"
                     MOVE "ATCADBEM"      TO XXEXTSIS-COM-ARQUIVO
                     CALL "GESTATU"
@@ -889,7 +889,7 @@
                 IF ATCADBEM-GRUPO NOT = ZEROS
                     MOVE WSPAD-CODEMP   TO ATCADGRC-NREMP
                     MOVE ATCADBEM-GRUPO TO ATCADGRC-CODGRU
-                    READ ATCADGRC
+                    READ ATCADGRC WITH NO LOCK 
                     IF XXEXTSIS-COM-FSTATUS NOT = "00"
                         MOVE ALL '?'         TO WX-GRUPO
                     ELSE
@@ -904,7 +904,7 @@
                 IF ATCADBEM-COD-UTILIZACAO NOT = ZEROS
                     MOVE WSPAD-CODEMP            TO ATCADUTL-NREMP
                     MOVE ATCADBEM-COD-UTILIZACAO TO ATCADUTL-COD
-                    READ ATCADUTL
+                    READ ATCADUTL WITH NO LOCK 
                     IF XXEXTSIS-COM-FSTATUS NOT = "00"
                         MOVE ALL '?'        TO WX-UTILIZACAO
                     ELSE
@@ -918,7 +918,7 @@
          LE-CGPLAPLA.
                 IF ATCADBEM-CTA-CTBL NOT = ZEROS
                     MOVE ATCADBEM-CTA-CTBL TO CGPLAPLA-CODR
-                    READ CGPLAPLA KEY IS CGPLAPLA-CHAVE-CODR
+                    READ CGPLAPLA WITH NO LOCK  KEY IS CGPLAPLA-CHAVE-CODR
                     IF XXEXTSIS-COM-FSTATUS NOT = "00"
                         MOVE ALL '?'        TO WX-CTA-CTBL
                     ELSE
@@ -932,7 +932,7 @@
          LE-CGGENCCU.
                 IF ATCADBEM-CCUSTO NOT = ZEROS
                     MOVE ATCADBEM-CCUSTO TO CGGENCCU-COD
-                    READ CGGENCCU
+                    READ CGGENCCU WITH NO LOCK 
                     IF XXEXTSIS-COM-FSTATUS NOT = "00"
                         MOVE ALL '?'            TO WX-CCUSTO
                     ELSE
@@ -947,7 +947,7 @@
                 IF ATCADBEM-COD-LOCALIZACAO NOT = ZEROS
                     MOVE WSPAD-CODEMP            TO ATCADLOC-NREMP
                     MOVE ATCADBEM-COD-LOCALIZACAO TO ATCADLOC-COD
-                    READ ATCADLOC
+                    READ ATCADLOC WITH NO LOCK 
                     IF XXEXTSIS-COM-FSTATUS NOT = "00"
                         MOVE ALL '?'        TO WX-LOCALIZACAO
                     ELSE
@@ -962,7 +962,7 @@
                 IF ATCADBEM-MOTBLQ-BEM NOT = ZEROS
                     MOVE WSPAD-CODEMP        TO ATCADBLQ-NREMP
                     MOVE ATCADBEM-MOTBLQ-BEM TO ATCADBLQ-COD
-                    READ ATCADBLQ
+                    READ ATCADBLQ WITH NO LOCK 
                     IF XXEXTSIS-COM-FSTATUS NOT = "00"
                         MOVE ALL '?'        TO WX-MOTBLQ
                     ELSE
@@ -989,7 +989,7 @@
                 IF ATCADBEM-CNPJ-FORNEC NOT = ZEROS
                     MOVE ATCADBEM-CNPJ-FORNEC TO PGCADFOR-CGC
                                                  WS-CNPJ
-                    READ PGCADFOR
+                    READ PGCADFOR WITH NO LOCK 
                     IF XXEXTSIS-COM-FSTATUS NOT = "00"
                         MOVE ALL '?'        TO WX-FORNECEDOR
                     ELSE
@@ -1003,7 +1003,7 @@
          LE-VDPRDPRD.
                 IF ATCADBEM-CODR-PRODUTO NOT = ZEROS
                     MOVE ATCADBEM-CODR-PRODUTO TO VDPRDPRD-CODR
-                    READ VDPRDPRD KEY IS VDPRDPRD-CHAVE-CODR
+                    READ VDPRDPRD WITH NO LOCK  KEY IS VDPRDPRD-CHAVE-CODR
                     IF XXEXTSIS-COM-FSTATUS NOT = "00"
                         MOVE ALL '?'        TO WX-PRODUTO
                     ELSE
@@ -1086,23 +1086,23 @@
                 GO TO CONFIRMA.
       *----------------------------------------------------------------*
          MOSTRA-ANTERIOR.
-                READ ATCADBEM PREVIOUS.
+                READ ATCADBEM PREVIOUS WITH NO LOCK.
                 IF XXEXTSIS-COM-FSTATUS NOT = "00"
                     MOVE "ATCADBEM"   TO XXEXTSIS-COM-ARQUIVO
                     CALL "GESTATU"
                     START ATCADBEM KEY >= ATCADBEM-CHAVE
-                    READ ATCADBEM
+                    READ ATCADBEM WITH NO LOCK 
                     GO TO RETORNA
                 END-IF.
                 GO TO LEU-ATCADBEM.
       *----------------------------------------------------------------*
          MOSTRA-PROXIMO.
-                READ ATCADBEM NEXT.
+                READ ATCADBEM NEXT WITH NO LOCK.
                 IF XXEXTSIS-COM-FSTATUS NOT = "00"
                     MOVE "ATCADBEM"   TO XXEXTSIS-COM-ARQUIVO
                     CALL "GESTATU"
                     START ATCADBEM KEY <= ATCADBEM-CHAVE
-                    READ ATCADBEM
+                    READ ATCADBEM WITH NO LOCK 
                     GO TO RETORNA
                 END-IF.
                 GO TO LEU-ATCADBEM.
