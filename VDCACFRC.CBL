@@ -838,7 +838,7 @@ MREG            MOVE ZEROS            TO WJ1-QTD-ITENS.
 MREG            MOVE 0                TO WTBAR-MREG.
 MREG            DISPLAY T101A UPON WTBAR.
          LE-VDCADCFR.
-                READ VDCADCFR AT END
+                READ VDCADCFR WITH NO LOCK AT END
 MREG                MOVE "S"          TO WJ1-FIMARQ
                     GO TO FLE-VDCADCFR.
                 IF XXEXTSIS-COM-FSTATUS = XXEXTSIS-COM-FSFIMARQ OR "46"
