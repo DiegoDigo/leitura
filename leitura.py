@@ -13,6 +13,13 @@ copys = []
 programas = []
 arquivo_nomes_programas = "listaProgramas.txt"
 
+for arquivo in sys.argv[1:]:
+    if arquivo[len(arquivo)-4:len(arquivo)+4] == ".txt" or arquivo[len(arquivo)-4:len(arquivo)+4] == ".TXT":
+        print(arquivo[0:len(arquivo)-4])
+
+
+if sys.argv[1:] ==
+
 if os.path.exists(arquivo_nomes_programas):
     try:
         nomes_programa = open(arquivo_nomes_programas, 'r')
