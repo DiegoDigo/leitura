@@ -1,5 +1,7 @@
 # #!/usr/bin/env python3
-# #AUTH Diego Delmiro
+# -*- encoding: utf-8 -*-
+# AUTHOR diego.delmiro
+# DATA 28/03/2017
 
 import fileinput
 import re
@@ -15,10 +17,9 @@ if os.path.exists(arquivo_nomes_programas):
     try:
         nomes_programa = open(arquivo_nomes_programas, 'r')
         for nome in nomes_programa:
-            # nome_parte1 = nome[0:2]
-            # caminho = "F:\PRGNEW\%s\FONTES\%s" % (nome_parte1, nome)
-            # print(caminho)
-            programas.append(nome.rstrip())
+            nome_parte1 = nome[0:2]
+            caminho = "F:\PRGNEW\%s\FONTES\%s" % (nome_parte1, nome)
+            programas.append(caminho.rstrip())
     except EOFError:
         print("O %s Está em uso" % arquivo_nomes_programas)
 else:
@@ -100,13 +101,33 @@ if len(programas) > 0 and programas is not None:
 
                     elif line.__contains__(r"READ %s KEY IS" % copy) and not line.__contains__(
                             "WITH NO LOCK") and line.__contains__(r"NEXT" % copy):
-                        line = re.sub(r"READ %s KEY IS" % copy, r'READ %s WITH NO LOCK %s KEY IS' % (copy, os.linesep),
-                                      line.rstrip()) + "\n"
+                        textoEditado = r'READ %s WITH NO LOCK %s KEY IS' % (copy, os.linesep)
+                        line = re.sub(r"READ %s KEY IS" % copy, textoEditado, line.rstrip()) + "\n"
+
+                    elif line.__contains__(r"READ %s PREVIOUS AT END" % copy) and not line.__contains__(
+                            "WITH NO LOCK") and line.__contains__(r"NEXT" % copy):
+                        textoEditado = r'READ %s PREVIOUS WITH NO LOCK AT END' % (copy, os.linesep)
+                        line = re.sub(r"READ %s PREVIOUS AT END" % copy, textoEditado, line.rstrip()) + "\n"
+
+                    elif line.__contains__(r"READ %s PREVIOUS, AT END" % copy) and not line.__contains__(
+                            "WITH NO LOCK") and line.__contains__(r"NEXT" % copy):
+                        textoEditado = r'READ %s PREVIOUS, WITH NO LOCK AT END' % (copy, os.linesep)
+                        line = re.sub(r"READ %s PREVIOUS, AT END" % copy, textoEditado, line.rstrip()) + "\n"
+
+                    elif line.__contains__(r"READ %s NEXT AT END" % copy) and not line.__contains__(
+                            "WITH NO LOCK") and line.__contains__(r"NEXT" % copy):
+                        textoEditado = r'READ %s NEXT WITH NO LOCK AT END' % (copy, os.linesep)
+                        line = re.sub(r"READ %s NEXT AT END" % copy, textoEditado, line.rstrip()) + "\n"
+
+                    elif line.__contains__(r"READ %s NEXT, AT END" % copy) and not line.__contains__(
+                            "WITH NO LOCK") and line.__contains__(r"NEXT" % copy):
+                        textoEditado = r'READ %s NEXT, WITH NO LOCK AT END' % (copy, os.linesep)
+                        line = re.sub(r"READ %s NEXT, AT END" % copy, textoEditado, line.rstrip()) + "\n"
 
                 sys.stdout.write(line)
 
             myfile.close()
-            print("TERMINIO DA ALTERAÇÃO DO PROGRAMA %s" % programa)
+            print("TERMINO DA ALTERAÇÃO DO PROGRAMA %s" % programa)
             print()
         except EOFError:
             print(EOFError)
