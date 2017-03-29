@@ -2,20 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b911ab9-fe3d-4d6b-95bc-24387e703564" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ATCABEMM.CBL" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ATCABEMM.CBL.back" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ATCABEMM_novo.CBL" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/VDCABLOA.CBL" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/VDCABLOC - Cópia.CBL" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/VDCABLOC.CBL" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/VDCABLOE.CBL" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/VDCABLOP - Cópia.CBL" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/VDCABLOP.CBL" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/VDCABPDA.CBL" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/VDCABPDE.CBL" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/VDCACFRA.CBL" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/VDCACFRC.CBL" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/leitura.py" afterPath="$PROJECT_DIR$/leitura.py" />
     </list>
@@ -27,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/leitura$leitura.coverage" NAME="leitura Coverage Results" MODIFIED="1490801035543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/leitura$leitura.coverage" NAME="leitura Coverage Results" MODIFIED="1490808221291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -38,10 +24,10 @@
       <file leaf-file-name="leitura.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/leitura.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="37" lean-forward="true" selection-start-line="32" selection-start-column="37" selection-end-line="33" selection-end-column="23" />
+            <state relative-caret-position="244">
+              <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
               <folding>
-                <element signature="e#93#109#0" expanded="true" />
+                <element signature="e#114#130#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -383,7 +369,21 @@
       <option name="project" value="LOCAL" />
       <updated>1490708587637</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="LENDO ARQUIVO DE TEXT E EXECUTANDO ROTINA">
+      <created>1490801696743</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1490801696743</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Adição do paramentro para passar pelo cmd">
+      <created>1490808209181</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1490808209181</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -396,7 +396,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32949308" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21543778" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21543778" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32949308" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -419,14 +419,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="LENDO ARQUIVO DE TEXT E EXECUTANDO ROTINA" />
-    <option name="LAST_COMMIT_MESSAGE" value="LENDO ARQUIVO DE TEXT E EXECUTANDO ROTINA" />
+    <MESSAGE value="Adição do paramentro para passar pelo cmd" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adição do paramentro para passar pelo cmd" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="65" />
+      <option name="time" value="66" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -436,7 +437,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -446,7 +447,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -456,7 +457,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -466,7 +467,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -476,7 +477,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -486,7 +487,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -511,7 +512,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -536,7 +537,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -546,7 +547,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -556,7 +557,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -566,7 +567,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -576,7 +577,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -601,7 +602,7 @@
         <state relative-caret-position="272">
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -611,7 +612,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -621,7 +622,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -631,7 +632,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -641,7 +642,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -651,7 +652,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -691,10 +692,10 @@
     <entry file="file://$PROJECT_DIR$/teste2.py" />
     <entry file="file://$PROJECT_DIR$/leitura.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="37" lean-forward="true" selection-start-line="32" selection-start-column="37" selection-end-line="33" selection-end-column="23" />
+        <state relative-caret-position="244">
+          <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
           <folding>
-            <element signature="e#93#109#0" expanded="true" />
+            <element signature="e#114#130#0" expanded="true" />
           </folding>
         </state>
       </provider>
