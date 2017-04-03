@@ -200,7 +200,7 @@ if len(programas) > 0 and programas is not None:
                         line = re.sub(r"READ %s KEY IS" % copy, textoEditado, line.rstrip()) + "\n"
                         editado = True
 
-                    elif line.__contains__(r"READ %s PREVIOUS AT END" % copy) and not line.__contains__("WITH NO LOCK") \
+                    elif line.__contains__(r"READ %s PREVIOUS AT END" % copy) and not line.__contains__("WITH NO LOCK")\
                             and line.__contains__(r"NEXT" % copy):
                         textoEditado = r'READ %s PREVIOUS WITH NO LOCK AT END' % (copy, os.linesep)
                         line = re.sub(r"READ %s PREVIOUS AT END" % copy, textoEditado, line.rstrip()) + "\n"
