@@ -22,13 +22,15 @@ mes = 0
 versao = 0
 versaoAquivo = ""
 versaoAlterada = ""
-editado, lista, subir = False, False, False
+editado, lista, subir, movePrgori = False, False, False, False
 
 
-def salvarProgramasAlterados(programa, ):
+
+def salvarProgramasAlterados(programa=None):
     try:
         arquivoProgramasAlterado = open("programasAlterados.txt", 'a+')
-        arquivoProgramasAlterado.writelines(programa[20:28] + datetime.now().strftime("%d-%m-%Y %H:%M:%S "))
+        arquivoProgramasAlterado.writelines(programa[20:28] + " " + datetime.now().strftime("%d-%m-%Y %H:%M:%S ")
+                                            + "\n")
         arquivoProgramasAlterado.close()
     except EOFError:
         print(u"Arquivo esta em uso")
@@ -55,7 +57,7 @@ def verificaVersao(ano=None, mes=None, versao=None):
     return formataMesVersao(anoAtual, mesAtual, novaVersao)
 
 
-def mudarVersao(editado, programa, subir):
+def mudarVersao(editado=False, programa=None, subir=False):
     if editado and subir:
         myfile = fileinput.FileInput(programa, inplace=1)
         for lines in myfile:
@@ -77,8 +79,31 @@ def mudarVersao(editado, programa, subir):
         print(u"O " + programa + " não teve alteração de versão")
 
 
-arquivo_programa_lista = str(sys.argv[1])
-resposta = str(sys.argv[2])
+def verificaDiretorio(nome=None):
+    nome_parte1 = nome[0:2]
+    nome = nome.replace("\n", "")
+    caminho = "F:\PRGNEW\%s\FONTES\%s" % (nome_parte1, nome)
+    if os.path.isfile(caminho):
+        programas.append(caminho.rstrip())
+        return False
+    else:
+        caminhoOri = "F:\PRGORI\%s\FONTES\%s" % (nome_parte1, nome)
+        caminhoPRGNEW = "F:\PRGNEW\%s\FONTES\\" % nome_parte1
+        if os.path.isfile(caminhoOri):
+            os.system("move %s %s " % (caminhoOri, caminhoPRGNEW))
+            programas.append(caminho.rstrip())
+            return True
+        else:
+            print("O %s nao existe no PRGORI" % caminhoOri)
+
+
+# arquivo_programa_lista = str(sys.argv[1])
+# resposta = str(sys.argv[2])
+
+arquivo_programa_lista = "VDCLCATA.CBL"
+resposta = "s"
+
+
 
 if str(arquivo_programa_lista)[len(arquivo_programa_lista) - 4:len(arquivo_programa_lista) + 4] == ".txt" \
         or arquivo_programa_lista[len(arquivo_programa_lista) - 4:len(arquivo_programa_lista) + 4] == ".TXT":
@@ -99,15 +124,11 @@ if lista:
     try:
         nomes_programa = open(arquivo_nomes_programas, 'r')
         for nome in nomes_programa:
-            nome_parte1 = nome[0:2]
-            caminho = "F:\PRGNEW\%s\FONTES\%s" % (nome_parte1, nome)
-            programas.append(caminho.rstrip())
+            movePrgori = verificaDiretorio(nome=nome)
     except EOFError:
         print(u"O %s Está em uso" % arquivo_nomes_programas)
 else:
-    nome_parte1 = nome_programa[0:2]
-    caminho = "F:\PRGNEW\%s\FONTES\%s" % (nome_parte1, nome_programa)
-    programas.append(caminho)
+    movePrgori = verificaDiretorio(nome=nome_programa)
 
 if len(programas) > 0 and programas is not None:
     for programa in programas:
@@ -118,12 +139,14 @@ if len(programas) > 0 and programas is not None:
             arq.close()
 
             for lines in arquivo:
+                lines = str(lines)
                 if lines[lines.find("COPY") + 32:45] == 'EMI"':
                     copys.append(lines[lines.find("COPY") + 23:40])
 
             myfile = fileinput.FileInput(programa, inplace=1, backup=".bak")
 
             for line in myfile:
+                line = str(line)
                 for copy in list(unique_everseen(copys)):
 
                     if line.__contains__(r"READ %s." % copy) and not line.__contains__("WITH NO LOCK") and \
@@ -232,7 +255,12 @@ if len(programas) > 0 and programas is not None:
         except EOFError:
             print(EOFError)
 
-    mudarVersao(editado, programa, subir)
+        mudarVersao(editado, programa, subir)
+
+        os.system("move %s %s " % (programa + ".bak", "F:\PRGOLD\%s\FONTES\\" % programa[20:22]))
+
+        if movePrgori:
+            os.system("move %s %s " % (programa, "F:\PRGORI\%s\FONTES\\" % programa[20:22]))
 
 else:
     print(u"O %s esta vazio por favor verificar" % arquivo_nomes_programas)
