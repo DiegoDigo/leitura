@@ -15,6 +15,7 @@ __autor__ = u"Diego Delmiro"
 
 copys = []
 programas = []
+arquivoInicial = []
 arquivo_nomes_programas = ""
 nome_programa = ""
 ano = 0
@@ -59,8 +60,12 @@ def verificaVersao(ano=None, mes=None, versao=None):
 
 def mudarVersao(editado=False, programa=None, subir=False):
     if editado and subir:
-        myfile = fileinput.FileInput(programa, inplace=1)
-        for lines in myfile:
+        temporario = criarTemporario(programa)
+        temp = lerTemporario(temporario)
+        os.system("del %s" % programa)
+        arquivoFinal = open(programa, 'w+', encoding="iso-8859-1")
+        for lines in temp:
+            lines = str(lines)
             if lines.__contains__("77 WTPGM-VERSAO"):
                 ano = lines[lines.find("VALUE") + 7:60].split(".")[0]
                 mes = lines[lines.find("VALUE") + 7:60].split(".")[1]
@@ -68,9 +73,9 @@ def mudarVersao(editado=False, programa=None, subir=False):
                 versaoAquivo = '"%s.%s.%s"' % (ano, mes, versao)
                 versaoAlterada = verificaVersao(ano=ano, mes=mes, versao=versao)
                 lines = re.sub(versaoAquivo, versaoAlterada, lines.rstrip()) + "\n"
-
-            sys.stdout.write(lines)
-        myfile.close()
+            arquivoFinal.write(str(lines))
+        arquivoFinal.close()
+        os.system("del %s" % temporario)
         salvarProgramasAlterados(programa)
         print(u"O Programa " + programa + " teve a versão alterada de " + versaoAquivo + " para " + versaoAlterada)
     elif editado:
@@ -97,13 +102,26 @@ def verificaDiretorio(nome=None):
             print("O %s nao existe no PRGORI" % caminhoOri)
 
 
+def criarTemporario(programa=None):
+    caminhoTemp = "%s.bak" % programa
+    with open(caminhoTemp, 'w+', encoding="iso-8859-1") as arquivo_temp:
+        for linhas in fileinput.FileInput(programa, openhook=fileinput.hook_encoded("iso-8859-1"), backup=".bak"):
+            arquivo_temp.write(str(linhas))
+        fileinput.close()
+        arquivo_temp.close()
+    return caminhoTemp
+
+
+def lerTemporario(temporario=None):
+    arqTemp = open(temporario, 'r', encoding="iso-8859-1")
+    arquivoTemp = arqTemp.readlines()
+    arqTemp.close()
+    return arquivoTemp
+
 # arquivo_programa_lista = str(sys.argv[1])
-# resposta = str(sys.argv[2])
-
-arquivo_programa_lista = "VDCLCATA.CBL"
-resposta = "s"
-
-
+# resposta = str(sys.argv[2])#
+arquivo_programa_lista = "VDATULIM.CBL"
+resposta = "S"
 
 if str(arquivo_programa_lista)[len(arquivo_programa_lista) - 4:len(arquivo_programa_lista) + 4] == ".txt" \
         or arquivo_programa_lista[len(arquivo_programa_lista) - 4:len(arquivo_programa_lista) + 4] == ".TXT":
@@ -134,18 +152,22 @@ if len(programas) > 0 and programas is not None:
     for programa in programas:
         print(u"ALTERANDO O PROGRAMA %s" % programa)
         try:
-            arq = open(programa, 'r')
+            arq = open(programa, 'rb')
             arquivo = arq.readlines()
             arq.close()
 
             for lines in arquivo:
                 lines = str(lines)
-                if lines[lines.find("COPY") + 32:45] == 'EMI"':
-                    copys.append(lines[lines.find("COPY") + 23:40])
+                if lines.__contains__("COPY") and lines.__contains__(".EMI") and not lines.__contains__(".EMIO"):
+                    copys.append(lines.rstrip()[38:46])
 
-            myfile = fileinput.FileInput(programa, inplace=1, backup=".bak")
+            temporario = criarTemporario(programa)
 
-            for line in myfile:
+            os.system("del %s" % programa)
+
+            arquivoFinal = open(programa, 'w+', encoding="iso-8859-1")
+
+            for line in lerTemporario(temporario):
                 line = str(line)
                 for copy in list(unique_everseen(copys)):
 
@@ -218,38 +240,38 @@ if len(programas) > 0 and programas is not None:
                         editado = True
 
                     elif line.__contains__(r"READ %s KEY IS" % copy) and not line.__contains__("WITH NO LOCK") and \
-                            line.__contains__(r"NEXT" % copy):
+                            line.__contains__(r"NEXT %s" % copy):
                         textoEditado = r'READ %s WITH NO LOCK %s KEY IS' % (copy, os.linesep)
                         line = re.sub(r"READ %s KEY IS" % copy, textoEditado, line.rstrip()) + "\n"
                         editado = True
 
                     elif line.__contains__(r"READ %s PREVIOUS AT END" % copy) and not line.__contains__("WITH NO LOCK")\
-                            and line.__contains__(r"NEXT" % copy):
+                            and line.__contains__(r"NEXT %s" % copy):
                         textoEditado = r'READ %s PREVIOUS WITH NO LOCK AT END' % (copy, os.linesep)
                         line = re.sub(r"READ %s PREVIOUS AT END" % copy, textoEditado, line.rstrip()) + "\n"
                         editado = True
 
                     elif line.__contains__(r"READ %s PREVIOUS, AT END" % copy) and \
-                            not line.__contains__("WITH NO LOCK") and line.__contains__(r"NEXT" % copy):
+                            not line.__contains__("WITH NO LOCK") and line.__contains__(r"NEXT %s" % copy):
                         textoEditado = r'READ %s PREVIOUS, WITH NO LOCK AT END' % (copy, os.linesep)
                         line = re.sub(r"READ %s PREVIOUS, AT END" % copy, textoEditado, line.rstrip()) + "\n"
                         editado = True
 
                     elif line.__contains__(r"READ %s NEXT AT END" % copy) and not line.__contains__("WITH NO LOCK") \
-                            and line.__contains__(r"NEXT" % copy):
+                            and line.__contains__(r"NEXT %s" % copy):
                         textoEditado = r'READ %s NEXT WITH NO LOCK AT END' % (copy, os.linesep)
                         line = re.sub(r"READ %s NEXT AT END" % copy, textoEditado, line.rstrip()) + "\n"
                         editado = True
 
                     elif line.__contains__(r"READ %s NEXT, AT END" % copy) and not line.__contains__("WITH NO LOCK") \
-                            and line.__contains__(r"NEXT" % copy):
+                            and line.__contains__(r"NEXT %s" % copy):
                         textoEditado = r'READ %s NEXT, WITH NO LOCK AT END' % (copy, os.linesep)
                         line = re.sub(r"READ %s NEXT, AT END" % copy, textoEditado, line.rstrip()) + "\n"
                         editado = True
 
-                sys.stdout.write(line)
+                arquivoFinal.write(str(line))
 
-            myfile.close()
+            arquivoFinal.close()
             print(u"TERMINO DA ALTERAÇÃO DO PROGRAMA %s" % programa)
             print()
         except EOFError:
