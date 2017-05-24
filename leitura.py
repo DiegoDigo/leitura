@@ -52,7 +52,7 @@ def verificaVersao(ano=None, mes=None, versao=None):
         anoAtual = str(datetime.now().year)[-2::]
     if int(mes) < datetime.now().month or int(mes) >= datetime.now().month:
         mesAtual = datetime.now().month
-    if int(versao) > 0:
+    if float(versao) > 0:
         novaVersao = int(versao) + 1
 
     return formataMesVersao(anoAtual, mesAtual, novaVersao)
@@ -70,6 +70,8 @@ def mudarVersao(editado=False, programa=None, subir=False):
                 ano = lines[lines.find("VALUE") + 7:60].split(".")[0]
                 mes = lines[lines.find("VALUE") + 7:60].split(".")[1]
                 versao = lines[lines.find("VALUE") + 7:60].split(".")[2]
+                if versao[-1::] == '"':
+                    versao = versao.replace('"', '')
                 versaoAquivo = '"%s.%s.%s"' % (ano, mes, versao)
                 versaoAlterada = verificaVersao(ano=ano, mes=mes, versao=versao)
                 lines = re.sub(versaoAquivo, versaoAlterada, lines.rstrip()) + "\n"
@@ -104,8 +106,9 @@ def verificaDiretorio(nome=None):
 
 def criarTemporario(programa=None):
     caminhoTemp = "%s.bak" % programa
+    os.system("copy {0} {1}".format(programa, caminhoTemp))
     with open(caminhoTemp, 'w+', encoding="iso-8859-1") as arquivo_temp:
-        for linhas in fileinput.FileInput(programa, openhook=fileinput.hook_encoded("iso-8859-1"), backup=".bak"):
+        for linhas in fileinput.FileInput(programa, openhook=fileinput.hook_encoded("iso-8859-1")):
             arquivo_temp.write(str(linhas))
         fileinput.close()
         arquivo_temp.close()
@@ -119,8 +122,8 @@ def lerTemporario(temporario=None):
     return arquivoTemp
 
 # arquivo_programa_lista = str(sys.argv[1])
-# resposta = str(sys.argv[2])#
-arquivo_programa_lista = "VDATULIM.CBL"
+# resposta = str(sys.argv[2])
+arquivo_programa_lista = "VDFANACM.CBL"
 resposta = "S"
 
 if str(arquivo_programa_lista)[len(arquivo_programa_lista) - 4:len(arquivo_programa_lista) + 4] == ".txt" \
