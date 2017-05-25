@@ -26,7 +26,6 @@ versaoAlterada = ""
 editado, lista, subir, movePrgori = False, False, False, False
 
 
-
 def salvarProgramasAlterados(programa=None):
     try:
         arquivoProgramasAlterado = open("programasAlterados.txt", 'a+')
@@ -59,6 +58,8 @@ def verificaVersao(ano=None, mes=None, versao=None):
 
 
 def mudarVersao(editado=False, programa=None, subir=False):
+    versaoAquivo = 0
+    versaoAlterada = 0
     if editado and subir:
         temporario = criarTemporario(programa)
         temp = lerTemporario(temporario)
@@ -79,6 +80,7 @@ def mudarVersao(editado=False, programa=None, subir=False):
         arquivoFinal.close()
         os.system("del %s" % temporario)
         salvarProgramasAlterados(programa)
+        print("atual : {0} , versao atual : {1}".format(versaoAquivo,versaoAlterada))
         print(u"O Programa " + programa + " teve a versão alterada de " + versaoAquivo + " para " + versaoAlterada)
     elif editado:
         salvarProgramasAlterados(programa)
@@ -121,10 +123,8 @@ def lerTemporario(temporario=None):
     arqTemp.close()
     return arquivoTemp
 
-# arquivo_programa_lista = str(sys.argv[1])
-# resposta = str(sys.argv[2])
-arquivo_programa_lista = "VDFANACM.CBL"
-resposta = "S"
+arquivo_programa_lista = str(sys.argv[1])
+resposta = str(sys.argv[2])
 
 if str(arquivo_programa_lista)[len(arquivo_programa_lista) - 4:len(arquivo_programa_lista) + 4] == ".txt" \
         or arquivo_programa_lista[len(arquivo_programa_lista) - 4:len(arquivo_programa_lista) + 4] == ".TXT":
