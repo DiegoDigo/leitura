@@ -14,7 +14,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/leitura$leitura.coverage" NAME="leitura Coverage Results" MODIFIED="1495649250751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/leitura$leitura.coverage" NAME="leitura Coverage Results" MODIFIED="1495822710833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/leitura$acucc.coverage" NAME="acucc Coverage Results" MODIFIED="1495823437094" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -25,15 +26,14 @@
       <file leaf-file-name="leitura.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/leitura.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="123" column="22" lean-forward="true" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
+            <state relative-caret-position="341">
+              <caret line="281" column="69" lean-forward="true" selection-start-line="281" selection-start-column="69" selection-end-line="281" selection-end-column="69" />
               <folding>
                 <element signature="e#91#130#0" expanded="true" />
                 <element signature="e#561#903#0" expanded="false" />
                 <element signature="e#965#1192#0" expanded="false" />
                 <element signature="e#1252#1624#0" expanded="false" />
                 <element signature="e#1691#3093#0" expanded="false" />
-                <element signature="e#3134#3739#0" expanded="false" />
                 <element signature="e#3782#4170#0" expanded="false" />
                 <element signature="e#4213#4348#0" expanded="false" />
               </folding>
@@ -80,6 +80,7 @@
         <option value="$PROJECT_DIR$/teste2.py" />
         <option value="$PROJECT_DIR$/TESTE.py" />
         <option value="$PROJECT_DIR$/teste.py" />
+        <option value="$PROJECT_DIR$/acucc.py" />
         <option value="$PROJECT_DIR$/leitura.py" />
       </list>
     </option>
@@ -114,7 +115,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -130,6 +130,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -137,7 +138,7 @@
     <property name="js.eslint.eslintPackage" value="" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dicionarioDados" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -156,7 +157,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.leitura">
+  <component name="RunManager" selected="Python.acucc">
     <configuration default="false" name="leitura" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -171,6 +172,25 @@
       <module name="leitura" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leitura.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="acucc" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="leitura" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/acucc.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -358,12 +378,14 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Python.leitura" />
+      <item index="1" class="java.lang.String" itemvalue="Python.acucc" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.leitura" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.acucc" />
+        <item index="1" class="java.lang.String" itemvalue="Python.leitura" />
       </list>
     </recent_temporary>
     <configuration default="true" type="tests" factoryName="Attests">
@@ -464,20 +486,26 @@
       <option name="project" value="LOCAL" />
       <updated>1495649345930</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Adição do paramentro para passar pelo cmd">
+      <created>1495713622615</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1495713622615</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16504854" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1723301" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32949308" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.171659" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.54953915" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25576037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -526,7 +554,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="210" />
+      <option name="time" value="213" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -541,24 +569,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
-            <element signature="e#3782#4170#0" expanded="false" />
-            <element signature="e#4213#4348#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leitura.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#91#130#0" expanded="true" />
-            <element signature="e#561#903#0" expanded="false" />
-            <element signature="e#965#1192#0" expanded="false" />
-            <element signature="e#1252#1624#0" expanded="false" />
-            <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -600,7 +610,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -617,7 +626,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -634,7 +642,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -651,7 +658,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -668,7 +674,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -685,7 +690,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -702,7 +706,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -719,7 +722,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -736,7 +738,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -753,7 +754,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -770,7 +770,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -787,7 +786,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -812,7 +810,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -837,7 +834,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -854,7 +850,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -871,7 +866,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -888,7 +882,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -905,7 +898,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -930,7 +922,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -947,7 +938,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -964,7 +954,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -981,7 +970,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -998,7 +986,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -1015,7 +1002,6 @@
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>
@@ -1069,17 +1055,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/acucc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="52" lean-forward="true" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/leitura.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="123" column="22" lean-forward="true" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
+        <state relative-caret-position="341">
+          <caret line="281" column="69" lean-forward="true" selection-start-line="281" selection-start-column="69" selection-end-line="281" selection-end-column="69" />
           <folding>
             <element signature="e#91#130#0" expanded="true" />
             <element signature="e#561#903#0" expanded="false" />
             <element signature="e#965#1192#0" expanded="false" />
             <element signature="e#1252#1624#0" expanded="false" />
             <element signature="e#1691#3093#0" expanded="false" />
-            <element signature="e#3134#3739#0" expanded="false" />
             <element signature="e#3782#4170#0" expanded="false" />
             <element signature="e#4213#4348#0" expanded="false" />
           </folding>

@@ -125,6 +125,8 @@ def lerTemporario(temporario=None):
 
 arquivo_programa_lista = str(sys.argv[1])
 resposta = str(sys.argv[2])
+# arquivo_programa_lista = "F:\\prgnew\VD\\fontes\\lista-vd-ori.txt"
+# resposta = "S"
 
 if str(arquivo_programa_lista)[len(arquivo_programa_lista) - 4:len(arquivo_programa_lista) + 4] == ".txt" \
         or arquivo_programa_lista[len(arquivo_programa_lista) - 4:len(arquivo_programa_lista) + 4] == ".TXT":
@@ -269,6 +271,16 @@ if len(programas) > 0 and programas is not None:
                     elif line.__contains__(r"READ %s NEXT, AT END" % copy) and not line.__contains__("WITH NO LOCK") \
                             and line.__contains__(r"NEXT %s" % copy):
                         textoEditado = r'READ %s NEXT, WITH NO LOCK AT END' % (copy, os.linesep)
+                        line = re.sub(r"READ %s NEXT, AT END" % copy, textoEditado, line.rstrip()) + "\n"
+                        editado = True
+                    elif line.__contains__(r"READ %s NEXT RECORD" % copy) and not line.__contains__("WITH NO LOCK") \
+                            and line.__contains__(r"NEXT %s" % copy):
+                        textoEditado = r'READ %s NEXT RECORD WITH NO LOCK AT END' % (copy, os.linesep)
+                        line = re.sub(r"READ %s NEXT, AT END" % copy, textoEditado, line.rstrip()) + "\n"
+                        editado = True
+                    elif line.__contains__(r"READ %s NEXT, RECORD" % copy) and not line.__contains__("WITH NO LOCK") \
+                            and line.__contains__(r"NEXT %s" % copy):
+                        textoEditado = r'READ %s NEXT, RECORD WITH NO LOCK AT END' % (copy, os.linesep)
                         line = re.sub(r"READ %s NEXT, AT END" % copy, textoEditado, line.rstrip()) + "\n"
                         editado = True
 
