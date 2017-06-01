@@ -9,14 +9,15 @@ import os
 import re
 import sys
 
-nomeProgramaOuLista = str(sys.argv[1])
-subirVersao = str(sys.argv[2])
+# nomeProgramaOuLista = str(sys.argv[1])
+# subirVersao = str(sys.argv[2])
 
-# nomeProgramaOuLista = "c:\\testeRodar.txt"
-# subirVersao = "s"
+nomeProgramaOuLista = "c:\\testeRodar.txt"
+subirVersao = "s"
 
 
 def moverArquivos(nomePrograma=None):
+    """ METODO QUE MOVE OS ARQUIVO DO ORI PARA O PRGNEW RENOMEANDO O ARQUIVO DO ORI"""
     nomePrograma = nomePrograma.replace("\n", "")
     caminhoArquivoOri = "F:\PRGORI\{0}\FONTES\{1}".format(nomePrograma[0:2], nomePrograma)
     caminhoArquivoNew = "F:\PRGNEW\{0}\FONTES\{1}".format(nomePrograma[0:2], nomePrograma)
@@ -27,6 +28,7 @@ def moverArquivos(nomePrograma=None):
 
 
 def verExtencao(nomePrograma=None):
+    """VERIFICA SE O ARQUIVO DIGITADO E UM TXT OU CBL"""
     listaArquivos = []
     if nomePrograma[-3::] == "txt" or nomePrograma[-3::] == "TXT":
         for arquivos in lerArquivo(nomePrograma):
@@ -37,6 +39,7 @@ def verExtencao(nomePrograma=None):
 
 
 def lerArquivo(nomePrograma=None):
+    """ LER O PROGRAMA .CBL """
     with open(nomePrograma, 'r', encoding="iso-8859-1") as arquivo:
         aq = arquivo.readlines()
         arquivo.close()
@@ -44,6 +47,7 @@ def lerArquivo(nomePrograma=None):
 
 
 def pegarArquivosEmi(nomePrograma=None):
+    """ GERA LISTA DE ARQUIVOS EMI PARA TORCAR AS LEITURAS DO .CBL"""
     programaEmis = []
     for linha in lerArquivo(nomePrograma):
         linha = str(linha)
@@ -54,6 +58,7 @@ def pegarArquivosEmi(nomePrograma=None):
 
 
 def criarArquivoTemporario(nomePrograma=None):
+    """ CRIAR UM ARQUIVO TEMPORAR .BAK PARA MOVER PARA O OLD """
     arquivoEntrada = lerArquivo(nomePrograma)
     with open('{0}.bak'.format(nomePrograma), 'w+', encoding="iso-8859-1") as arquivoSaida:
         for linha in arquivoEntrada:
@@ -63,12 +68,11 @@ def criarArquivoTemporario(nomePrograma=None):
 
 
 def editarLinhas(arquivo=None, nomePrograma=None, copys=None, subirVersao=None):
-    editado = False
+    """ EDITA LINHAS DO ARQUIVO .CBL"""
     arquivoFinal = open(nomePrograma, 'w+', encoding="iso-8859-1")
-
+    editado = False
     for line in arquivo:
         line = str(line)
-
         if line.__contains__("77 WTPGM-VERSAO") and subirVersao == "S":
             versaoAnterior = line.split()[5][1:10]
             versaoFinal = mudarVersao(int(line.split()[5][1:3]), int(line.split()[5][4:6]),
@@ -189,11 +193,14 @@ def editarLinhas(arquivo=None, nomePrograma=None, copys=None, subirVersao=None):
 
         arquivoFinal.write(str(line))
     arquivoFinal.close()
+    if editado:
+        salvarArquivosAlterados(nomePrograma,versaoAnterior, versaoFinal)
     print("versão anterior : {0} versao atual : {1}". format(versaoAnterior, versaoFinal))
-    return editado
 
 
 def mudarVersao(ano=None, mes=None, versao=None):
+    """ PEGA A VERSAO DO ARQUIVO .CBL E MODIFICA A MESMA """
+
     if isinstance(ano, int) and ano < int(str(datetime.today().year)[-2::]):
         ano = int(str(datetime.today().year)[-2::])
     if isinstance(mes, int):
@@ -211,6 +218,13 @@ def mudarVersao(ano=None, mes=None, versao=None):
     return "%s.%s.%s" % (str(ano), str(mes), str(versao))
 
 
+def salvarArquivosAlterados(nomePrograma=None, versao=None, versaoFinal=None):
+    """ GERA UM ARQUIVO COM O NOME DO PROGRAMAS EDITAR PELO SCRIPT """
+    with open("ProgramasAlteradosOri.txt", 'a') as arquivo:
+        arquivo.write(nomePrograma[20:28] + " {0} {1} {2} \n".format(str(datetime.today()), str(versao), str(versaoFinal)))
+        arquivo.close()
+
+
 listaProgramas = verExtencao(nomeProgramaOuLista)
 
 
@@ -222,8 +236,5 @@ for programa in listaProgramas:
         arquivo = lerArquivo(programa)
         try:
             editarLinhas(arquivo, programa, listaCopys, subirVersao.upper())
-        except EOFError:
-            raise EOFError("Erro ao editar o arquivo")
-
-
-
+        except IOError:
+            raise IOError("Erro ao editar o arquivo")
