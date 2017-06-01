@@ -88,24 +88,6 @@ def mudarVersao(editado=False, programa=None, subir=False):
         print(u"O " + programa + " não teve alteração de versão")
 
 
-def verificaDiretorio(nome=None):
-    nome_parte1 = nome[0:2]
-    nome = nome.replace("\n", "")
-    caminho = "F:\PRGNEW\%s\FONTES\%s" % (nome_parte1, nome)
-    if os.path.isfile(caminho):
-        programas.append(caminho.rstrip())
-        return False
-    else:
-        caminhoOri = "F:\PRGORI\%s\FONTES\%s" % (nome_parte1, nome)
-        caminhoPRGNEW = "F:\PRGNEW\%s\FONTES\\" % nome_parte1
-        if os.path.isfile(caminhoOri):
-            os.system("move %s %s " % (caminhoOri, caminhoPRGNEW))
-            programas.append(caminho.rstrip())
-            return True
-        else:
-            print("O %s nao existe no PRGORI" % caminhoOri)
-
-
 def criarTemporario(programa=None):
     caminhoTemp = "%s.bak" % programa
     os.system("copy {0} {1}".format(programa, caminhoTemp))
@@ -125,9 +107,6 @@ def lerTemporario(temporario=None):
 
 arquivo_programa_lista = str(sys.argv[1])
 resposta = str(sys.argv[2])
-# arquivo_programa_lista = "F:\\prgnew\VD\\fontes\\lista-vd-ori.txt"
-# resposta = "S"
-
 if str(arquivo_programa_lista)[len(arquivo_programa_lista) - 4:len(arquivo_programa_lista) + 4] == ".txt" \
         or arquivo_programa_lista[len(arquivo_programa_lista) - 4:len(arquivo_programa_lista) + 4] == ".TXT":
     lista = True
@@ -147,11 +126,15 @@ if lista:
     try:
         nomes_programa = open(arquivo_nomes_programas, 'r')
         for nome in nomes_programa:
-            movePrgori = verificaDiretorio(nome=nome)
+            nome_parte1 = nome[0:2]
+            nome = nome.replace("\n", "")
+            caminho = "F:\PRGNEW\%s\FONTES\%s" % (nome_parte1, nome)
     except EOFError:
         print(u"O %s Está em uso" % arquivo_nomes_programas)
 else:
-    movePrgori = verificaDiretorio(nome=nome_programa)
+    nome_parte1 = nome_programa[0:2]
+    nome = nome_programa.replace("\n", "")
+    caminho = "F:\PRGNEW\%s\FONTES\%s" % (nome_parte1, nome)
 
 if len(programas) > 0 and programas is not None:
     for programa in programas:
