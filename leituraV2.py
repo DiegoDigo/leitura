@@ -322,3 +322,5 @@ for programa in listaprogramas:
                 editarlinhas(arquivo, programa, listaCopys, subirVersao.upper())
             except IOError:
                 raise IOError("Erro ao editar o arquivo")
+        else:
+            print("Não Teve Alteração")
