@@ -32,19 +32,25 @@ def verExtencao(nomePrograma=None):
     listaArquivos = []
     if nomePrograma[-3::] == "txt" or nomePrograma[-3::] == "TXT":
         for arquivos in lerArquivo(nomePrograma):
-            listaArquivos.append(moverArquivos(arquivos))
+            arquivos = arquivos.replace("\n", "")
+            caminho = "F:\PRGORI\{0}\FONTES\{1}".format(arquivos[0:2], arquivos)
+            listaArquivos.append(caminho)
     else:
-        listaArquivos.append(moverArquivos(nomeProgramaOuLista))
+        nomePrograma = nomePrograma.replace("\n", "")
+        caminho = "F:\PRGORI\{0}\FONTES\{1}".format(nomePrograma[0:2], nomePrograma)
+        listaArquivos.append(caminho)
     return listaArquivos
 
 
 def lerArquivo(nomePrograma=None):
     """ LER O PROGRAMA .CBL """
-    with open(nomePrograma, 'r', encoding="iso-8859-1") as arquivo:
-        aq = arquivo.readlines()
-        arquivo.close()
-    return aq
-
+    try:
+        with open(nomePrograma, 'r', encoding="iso-8859-1") as arquivo:
+            aq = arquivo.readlines()
+            arquivo.close()
+        return aq
+    except IOError:
+        raise IOError("ERRO AO ABRIR O ARQUIVO")
 
 def pegarArquivosEmi(nomePrograma=None):
     """ GERA LISTA DE ARQUIVOS EMI PARA TORCAR AS LEITURAS DO .CBL"""
@@ -198,6 +204,96 @@ def editarLinhas(arquivo=None, nomePrograma=None, copys=None, subirVersao=None):
     print("versão anterior : {0} versao atual : {1}". format(versaoAnterior, versaoFinal))
 
 
+def verificaArquivo(arquivo=None, nomePrograma=None, copys=None):
+    """ EDITA LINHAS DO ARQUIVO .CBL"""
+    arquivoFinal = open(nomePrograma, 'r', encoding="iso-8859-1")
+    editado = False
+    for line in arquivo:
+        line = str(line)
+        for copy in list(unique_everseen(copys)):
+
+            if line.__contains__(r"READ %s." % copy) and not line.__contains__("WITH NO LOCK") and \
+                    not line.__contains__("PREVIOUS") \
+                    and not line.__contains__("AT END") and not line.__contains__("NEXT"):
+                editado = True
+
+            if line.__contains__(r"READ %s" % copy) and not line.__contains__(
+                    "WITH NO LOCK") and not line.__contains__("PREVIOUS") \
+                    and not line.__contains__("AT END") and not line.__contains__("NEXT"):
+                editado = True
+
+            if line.__contains__(r"READ %s AT END" % copy) and not line.__contains__("WITH NO LOCK") and \
+                    not line.__contains__("PREVIOUS") \
+                    and not line.__contains__("NEXT"):
+                editado = True
+
+            if line.__contains__(r"READ %s AT END." % copy) and not line.__contains__("WITH NO LOCK") and \
+                    not line.__contains__("PREVIOUS") \
+                    and not line.__contains__("NEXT"):
+                editado = True
+
+            if line.__contains__(r"READ %s NEXT." % copy) and not line.__contains__("WITH NO LOCK") and \
+                    not line.__contains__("PREVIOUS") \
+                    and not line.__contains__("AT END"):
+                editado = True
+
+            if line.__contains__(r"READ %s NEXT," % copy) and not line.__contains__("WITH NO LOCK") and \
+                    not line.__contains__("PREVIOUS") \
+                    and not line.__contains__("AT END"):
+                editado = True
+
+            if line.__contains__(r"READ %s NEXT" % copy) and not line.__contains__("WITH NO LOCK") and \
+                    not line.__contains__("PREVIOUS") \
+                    and not line.__contains__("AT END"):
+                editado = True
+
+            if line.__contains__(r"READ %s PREVIOUS." % copy) and not line.__contains__("WITH NO LOCK") and \
+                    not line.__contains__("NEXT") \
+                    and not line.__contains__("AT END"):
+                editado = True
+
+            if line.__contains__(r"READ %s PREVIOUS," % copy) and not line.__contains__("WITH NO LOCK") and \
+                    not line.__contains__("NEXT") \
+                    and not line.__contains__("AT END"):
+                editado = True
+
+            if line.__contains__(r"READ %s PREVIOUS" % copy) and not line.__contains__("WITH NO LOCK") and \
+                    not line.__contains__("NEXT") \
+                    and not line.__contains__("AT END"):
+                editado = True
+
+            if line.__contains__(r"READ %s KEY IS" % copy) and not line.__contains__("WITH NO LOCK") and \
+                    line.__contains__(r"NEXT %s" % copy):
+                editado = True
+
+            if line.__contains__(r"READ %s PREVIOUS AT END" % copy) and not line.__contains__("WITH NO LOCK") \
+                    and line.__contains__(r"NEXT %s" % copy):
+                editado = True
+
+            if line.__contains__(r"READ %s PREVIOUS, AT END" % copy) and \
+                    not line.__contains__("WITH NO LOCK") and line.__contains__(r"NEXT %s" % copy):
+                editado = True
+
+            if line.__contains__(r"READ %s NEXT AT END" % copy) and not line.__contains__("WITH NO LOCK") \
+                    and line.__contains__(r"NEXT %s" % copy):
+                editado = True
+
+            if line.__contains__(r"READ %s NEXT, AT END" % copy) and not line.__contains__("WITH NO LOCK") \
+                    and line.__contains__(r"NEXT %s" % copy):
+                editado = True
+
+            if line.__contains__(r"READ %s NEXT RECORD" % copy) and not line.__contains__("WITH NO LOCK") \
+                    and line.__contains__(r"NEXT %s" % copy):
+                editado = True
+
+            if line.__contains__(r"READ %s NEXT, RECORD" % copy) and not line.__contains__("WITH NO LOCK") \
+                    and line.__contains__(r"NEXT %s" % copy):
+                editado = True
+
+    arquivoFinal.close()
+    return editado
+
+
 def mudarVersao(ano=None, mes=None, versao=None):
     """ PEGA A VERSAO DO ARQUIVO .CBL E MODIFICA A MESMA """
 
@@ -234,7 +330,10 @@ for programa in listaProgramas:
         criarArquivoTemporario(programa)
         listaCopys = pegarArquivosEmi(programa)
         arquivo = lerArquivo(programa)
-        try:
-            editarLinhas(arquivo, programa, listaCopys, subirVersao.upper())
-        except IOError:
-            raise IOError("Erro ao editar o arquivo")
+        if verificaArquivo(arquivo, programa, listaCopys):
+            programaPRGNEW = moverArquivos(programa[20:32])
+            arquivoPRGNEW = lerArquivo(programaPRGNEW)
+            try:
+                editarLinhas(arquivoPRGNEW, programaPRGNEW, listaCopys, subirVersao.upper())
+            except IOError:
+                raise IOError("Erro ao editar o arquivo")
